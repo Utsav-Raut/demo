@@ -1,0 +1,6 @@
+{
+    "db_name": "userdb",
+    "table_name":"demo_tran",
+    "file_path": "D:/Users/URaut/Desktop/utilities/pos_files",
+    "field_name":"notifications.POSLog.Transaction.TransactionID"
+}
