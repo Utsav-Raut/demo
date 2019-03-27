@@ -27,8 +27,7 @@ def execute_etl_job(db_name):
     spark, log, config = main()
     # Execute ETL pipeline
     data = extract_data(spark, db_name, config['table_name'])
-    data_transformed = transformed_data(data, spark, config['table_name'], config['file_path'], 
-                        config['field_name'])
+    data_transformed = transformed_data(data, spark, config['table_name'], config['s3_path'], config['field_name'])
     load_data(data_transformed, config['table_name'])
     return data_transformed
 
@@ -53,9 +52,9 @@ def extract_data(spark, db_name, table_name):
     )
     return df
 
-def transformed_data(df, spark, table_name, file_path, field_name):
+def transformed_data(df, spark, table_name, s3_path, field_name):
     "Transform the original data set"
-    row_count_diff, result, hive_tbl_row_count, input_file_row_count = get_row_count_diff(spark, df, field_name, table_name, file_path)
+    row_count_diff, result, hive_tbl_row_count, input_file_row_count = get_row_count_diff(spark, df, field_name, table_name, s3_path)
     print("Hive table row count = {}".format(hive_tbl_row_count))
     print("Input file row count = {}".format(input_file_row_count))
     print("Row count difference = {}".format(row_count_diff))
