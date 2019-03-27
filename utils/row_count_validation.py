@@ -1,8 +1,8 @@
 from utils import hive_table_operations, file_operations
 
-def get_row_count_diff(spark, df, field_name, table_name, file_path):
+def get_row_count_diff(spark, df, field_name, table_name, s3_folder_path):
     hive_tbl_row_count = hive_table_operations.get_hive_tbl_row_count(spark, df, field_name, table_name)
-    input_file_row_count = file_operations.get_file_row_count(file_path, field_name)
+    input_file_row_count = file_operations.get_file_row_count(s3_folder_path, field_name)
 
     row_count_diff = hive_tbl_row_count - input_file_row_count
 
