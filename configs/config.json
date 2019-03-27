@@ -1,6 +1,6 @@
 {
     "db_name": "userdb",
     "table_name":"demo_tran",
-    "file_path": "D:/Users/URaut/Desktop/utilities/pos_files",
+    "s3_path":"D:/Users/URaut/Desktop/s3folderlocation/",
     "field_name":"notifications.POSLog.Transaction.TransactionID"
 }
