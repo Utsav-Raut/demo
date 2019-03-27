@@ -18,10 +18,10 @@ def get_s3_location():
 
 @app.route('/nikeDirect/rowCountValidation/getRowCountDiff/', methods=['GET'])
 def getRowCountVal():
-    db_name = request.args.get('hiveDBname') #Newly added for api implementation
-    print(db_name)      #Newly added for api implementation
+    db_name = request.args.get('hiveDBname')
+    print(db_name)
     data_transformed = etl_job.execute_etl_job(db_name)
-    row_count_diff_data = {}    #Newly added for api implementation
+    row_count_diff_data = {}
     row_count_diff_data["NumberOfTransactionsInFile"] = data_transformed[3]
     row_count_diff_data["NumberofTransactionsInTargetTable"] = data_transformed[2]
     row_count_diff_data["Difference"] = data_transformed[0]
